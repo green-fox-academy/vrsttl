@@ -1,0 +1,65 @@
+* {
+    font-family: 'Consolas', cursive;
+    padding: 0;
+}
+
+body{
+    
+}
+
+nav {
+    background-color: #333333;
+    padding: 5px 0;
+    margin: 5px 0;
+   
+}
+#mindenegyeb{
+    padding: 0 10%;
+}
+a,
+h2 {
+    color:#ff0099
+    
+}
+html{
+    background: url(topography.png) top left repeat;
+    background-position: top left;
+    
+}
+
+h3{
+    font-size: 36px;
+    text-align: center;
+}
+h2{
+    font-size: 15px;
+}
+
+#separator{
+    font-size: 40px;
+    text-align: center;
+}
+li{
+    display: inline-block;
+    padding: 10px 10px;
+    
+}
+
+
+
+
+#linkek{
+    float: right;
+    padding: 0 10% 0 0;
+}
+
+#kep{
+    padding-left: 10%;
+}
+.wikititle{
+    font-size: 19px;
+}
+
+/*#kep padding left 15px volt
+uccsolink kapott float right 10%-ot
+#mindenegyeb kapott 10% paddinget a body helyett
