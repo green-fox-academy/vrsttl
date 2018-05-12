@@ -3,10 +3,9 @@ export { };
 
 let lineCount: number = 8;
 let charOutput: string = '';
-let i: number = 1;
 let evenLineIndicator: boolean = false;
 
-for (i; i <= lineCount; i++) {
+for (let i : number = 1; i <= lineCount; i++) {
   charOutput = '';
   if (i % 2 === 1 || i === 1) {
     evenLineIndicator = false;
