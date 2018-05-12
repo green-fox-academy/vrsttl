@@ -1,5 +1,5 @@
 'use strict';
-
+export { };
 let lineCount: number = 16;
 let columnCount: number = lineCount - 1;
 let charOutput: string = '';
@@ -14,7 +14,7 @@ for (let i: number = 1; i <= lineCount; i++) {
       charOutput += '%';
     }
   }
-  else if (i !== 1 || i !== lineCount) {
+  else {
     charOutput += '%';
     for (let m: number = 0; m <= spaceCount; m++) {
       charOutput += ' ';
