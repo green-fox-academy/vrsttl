@@ -5,9 +5,9 @@ let typo : string = 'kuty';
 
 function appendA(myTypo : string = typo) {
    myTypo = myTypo += 'a';
-   console.log(myTypo);
+   return myTypo;
 }
-appendA();
+console.log(appendA());
 
 
 // -  Create a string variable named `typo` and assign the value `kuty` to it
