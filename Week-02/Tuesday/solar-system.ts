@@ -7,17 +7,11 @@ let planetList: string[] = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Ura
 //planetList.push('Saturn');
 //console.log(planetList);
 
-function putSaturn(){
+function putSaturn(planetList){
   planetList.push('Saturn');
   return planetList;
 }
-
-
-console.log(putSaturn());
-
-
-
-
+console.log(putSaturn(planetList));
 export = putSaturn;
 
 
