@@ -5,8 +5,6 @@ const ctx = canvas.getContext('2d');
 let rBowColors: string[] = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
 function rainbowBox(sqSize: number, boxColor: string) {
-  //let x: number = 300 - (sqSize / 2);
-  //let y: number = 200 - (sqSize / 2);
   for (let i: number = 0; i <= rBowColors.length; i++) {
     if (i === rBowColors.length) {
       i = 0;
