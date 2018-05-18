@@ -61,23 +61,5 @@ function envStar() {
 }
 
 envStar();
-/*
-function lowerArc() {
-  for (let i: number = 0; i <= canvas.width / pixelDist; i++) {
-    ctx.beginPath();
-    ctx.strokeStyle = 'green';
-    ctx.moveTo(x, y);
-    ctx.lineTo(a, b);
-    ctx.stroke();
-    y = y + pixelDist;
-    a = a + pixelDist;
-  }
-}
-upperarc();
-x = 0;
-y = 0;
-a = pixelDist;
-b = canvas.height;
-lowerArc();
-*/
+
 
