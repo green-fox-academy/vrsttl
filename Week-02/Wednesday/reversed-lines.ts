@@ -13,6 +13,14 @@ function readLog(filePath: string) {
   }
 }
 
+function appendLineBreak(output: any[]){
+  output.forEach(element => {
+    element.push('\r\n');
+    return element;    
+  });
+}
+
+
 function decrypt() {
   try {
     let rawText: any[] = readLog('reversed-lines.txt').split('\r\n');
@@ -26,9 +34,9 @@ function decrypt() {
     workingArray.forEach(workingArray => {
       output.push(workingArray.reverse());
     });
-
+    appendLineBreak(output);
     output.forEach(output => {
-      letsPrintThis += output.join('');
+      letsPrintThis = letsPrintThis + output.join('');
     });
     console.log(letsPrintThis);
   }
