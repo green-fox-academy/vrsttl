@@ -12,15 +12,12 @@ function readLog(filePath: string) {
     console.log('Unable to read file: reversed-lines.txt');
   }
 }
-
-function appendLineBreak(output: any[]){
+function appendLineBreak(output: any[]) {
   output.forEach(element => {
     element.push('\r\n');
-    return element;    
+    return element;
   });
 }
-
-
 function decrypt() {
   try {
     let rawText: any[] = readLog('reversed-lines.txt').split('\r\n');
@@ -30,7 +27,6 @@ function decrypt() {
     rawText.forEach(rawText => {
       workingArray.push(rawText.split(''));
     });
-
     workingArray.forEach(workingArray => {
       output.push(workingArray.reverse());
     });
