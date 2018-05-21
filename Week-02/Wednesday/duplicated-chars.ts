@@ -9,7 +9,7 @@ function readLog(filePath: string) {
   try {
     return fs.readFileSync('duplicated-chars.txt', charEncoding);
   } catch (error) {
-    console.log('Unable to read file: log.txt');
+    console.log('Unable to read file: duplicated-chars.txt');
   }
 }
 
