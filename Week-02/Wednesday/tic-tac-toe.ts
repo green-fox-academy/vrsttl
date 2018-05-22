@@ -19,25 +19,25 @@ function ticTacResult(filePath: string) {
             individualPlays.push(element);
           }
         });
-        if ((individualPlays[0] && individualPlays[1] && individualPlays[2]) === 'X' ||
-          (individualPlays[3] && individualPlays[4] && individualPlays[5]) === 'X' ||
-          (individualPlays[6] && individualPlays[7] && individualPlays[8]) === 'X' ||
-          (individualPlays[0] && individualPlays[3] && individualPlays[6]) === 'X' ||
-          (individualPlays[1] && individualPlays[4] && individualPlays[7]) === 'X' ||
-          (individualPlays[2] && individualPlays[5] && individualPlays[8]) === 'X' ||
-          (individualPlays[0] && individualPlays[4] && individualPlays[8]) === 'X' ||
-          (individualPlays[2] && individualPlays[4] && individualPlays[6]) === 'X') {
+        if ((individualPlays[0] === 'X' && individualPlays[1] === 'X' && individualPlays[2]) === 'X' ||
+          (individualPlays[3] === 'X' && individualPlays[4] === 'X' && individualPlays[5]) === 'X' ||
+          (individualPlays[6] === 'X' && individualPlays[7] === 'X' && individualPlays[8]) === 'X' ||
+          (individualPlays[0] === 'X' && individualPlays[3] === 'X' && individualPlays[6]) === 'X' ||
+          (individualPlays[1] === 'X' && individualPlays[4] === 'X' && individualPlays[7]) === 'X' ||
+          (individualPlays[2] === 'X' && individualPlays[5] === 'X' && individualPlays[8]) === 'X' ||
+          (individualPlays[0] === 'X' && individualPlays[4] === 'X' && individualPlays[8]) === 'X' ||
+          (individualPlays[2] === 'X' && individualPlays[4] === 'X' && individualPlays[6]) === 'X') {
           console.log(individualPlays);
           winnerStatus = 'X wins'
         }
-        else if ((individualPlays[0] && individualPlays[1] && individualPlays[2]) === 'O' ||
-          (individualPlays[3] && individualPlays[4] && individualPlays[5]) === 'O' ||
-          (individualPlays[6] && individualPlays[7] && individualPlays[8]) === 'O' ||
-          (individualPlays[0] && individualPlays[3] && individualPlays[6]) === 'O' ||
-          (individualPlays[1] && individualPlays[4] && individualPlays[7]) === 'O' ||
-          (individualPlays[2] && individualPlays[5] && individualPlays[8]) === 'O' ||
-          (individualPlays[0] && individualPlays[4] && individualPlays[8]) === 'O' ||
-          (individualPlays[2] && individualPlays[4] && individualPlays[6]) === 'O') {
+        else if ((individualPlays[0] === 'O' && individualPlays[1] === 'O' && individualPlays[2]) === 'O' ||
+          (individualPlays[3] === 'O' && individualPlays[4] === 'O' && individualPlays[5]) === 'O' ||
+          (individualPlays[6] === 'O' && individualPlays[7] === 'O' && individualPlays[8]) === 'O' ||
+          (individualPlays[0] === 'O' && individualPlays[3] === 'O' && individualPlays[6]) === 'O' ||
+          (individualPlays[1] === 'O' && individualPlays[4] === 'O' && individualPlays[7]) === 'O' ||
+          (individualPlays[2] === 'O' && individualPlays[5] === 'O' && individualPlays[8]) === 'O' ||
+          (individualPlays[0] === 'O' && individualPlays[4] === 'O' && individualPlays[8]) === 'O' ||
+          (individualPlays[2] === 'O' && individualPlays[4] === 'O' && individualPlays[6]) === 'O') {
           console.log(individualPlays);
           winnerStatus = 'O wins';
         } else {
