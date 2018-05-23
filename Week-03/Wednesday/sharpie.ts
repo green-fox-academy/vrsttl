@@ -6,8 +6,8 @@ class Sharpie {
   width: number = 0;
   inkAmount: number = 0;
 
-  constructor(name: string) {
-    this.color = 'black';
+  constructor(color: string) {
+    this.color = color;
     this.inkAmount = 100;
   }
   use() {
