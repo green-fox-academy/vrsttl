@@ -9,7 +9,14 @@ class Station {
     this.station = name;
     this.gasAmount = integer;
   }
+  refill(car) {
+    this.gasAmount -= car.capacity;
+    car.incGas();
+    console.log(petrolStation);
+    console.log(peugeot);
+  }
 }
+
 class Car {
   gasAmount: number = 0;
   capacity: number = 100;
@@ -17,19 +24,16 @@ class Car {
     this.gasAmount = 0;
     this.capacity = 100;
   }
+  incGas(car) {
+    this.gasAmount += this.capacity;
+  }
 }
+
 let petrolStation: Station = new Station('Shell', 5000);
 console.log(petrolStation);
-let Peugeot: Car = new Car(0, 100);
-console.log(Peugeot);
-function refill(car: Car, station: Station) {
-  car.gasAmount += car.capacity;
-  station.gasAmount -= car.capacity;
-}
-refill(Peugeot, petrolStation);
-console.log(Peugeot, petrolStation);
-
-
+let peugeot: Car = new Car(0, 100);
+console.log(peugeot);
+petrolStation.refill(peugeot);
 
 /*Create a Station and a Car classes
 Station
