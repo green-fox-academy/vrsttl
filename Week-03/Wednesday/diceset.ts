@@ -52,17 +52,6 @@ function untilSix() {
 }
 untilSix();
 
-/*diceSet.roll();
-diceSet.getCurrent();
-console.log("------------------");
-diceSet.reroll();
-diceSet.getCurrent();
-console.log("------------------");
-diceSet.reroll();
-diceSet.getCurrent();
-console.log("------------------");
-diceSet.reroll(4);
-diceSet.getCurrent();*/
 // You have a `DiceSet` class which has a list for 6 dices
 // You can roll all of them with roll()
 // Check the current rolled numbers with getCurrent()
