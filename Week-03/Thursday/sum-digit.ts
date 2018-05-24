@@ -1,9 +1,7 @@
 'use strict';
 export { };
 
-
 function sumDigit(n: number): number {
-  let workingNumber: number = 0;
   if (n <= 0) {
     return 0;
   } else {
