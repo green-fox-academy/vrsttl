@@ -25,6 +25,9 @@ export class Aircraft {
     if (this.currentAmmo > 0) {
       return this.currentAmmo * this.baseDamage;
     }
+    else {
+      return 0;
+    }
   }
   protected refill(depot: number) {
     this.currentAmmo += this.maxAmmo;
@@ -46,7 +49,7 @@ class F16 extends Aircraft {
   constructor(type: string = 'F16', maxAmmo: number = 8, baseDamage: number = 30) {
     super('F16');
     this.type = type;
-    this.maxAmmo = maxAmmo;
+    this.maxAmmo = 8;
     this.baseDamage = baseDamage;
     this.currentAmmo = 0;
     this.priority = false;
@@ -56,7 +59,7 @@ class F35 extends Aircraft {
   constructor(type: string = 'F16', maxAmmo: number = 12, baseDamage: number = 50) {
     super('F35');
     this.type = type;
-    this.maxAmmo = maxAmmo;
+    this.maxAmmo = 12;
     this.baseDamage = baseDamage;
     this.currentAmmo = 0;
     this.priority = true;

@@ -40,7 +40,8 @@ export class Carrier {
   fight(carrier: Carrier) {
     let damageOutput: number = 0;
     this.planes.forEach(element => {
-      damageOutput += element.currentAmmo * element.baseDamage;
+      damageOutput += element.fight();
+      element.currentAmmo = 0;
     });
     carrier.hp = carrier.hp - damageOutput;
     if (carrier.hp <= 0) {
@@ -55,7 +56,7 @@ export class Carrier {
     console.log(`HP: ${this.hp}, Aircraft count: ${this.planes.length}, Ammo Storage: ${this.initialAmmo}, Total damage: ${totalDamage}`);
     console.log('Aircraft:')
     for (let i: number = 0; i < this.planes.length; i++) {
-      console.log(this.planes[i]);
+      console.log(`Type: ${this.planes[i].type}, Ammo: ${this.planes[i].currentAmmo}, Base Damage: ${this.planes[i].baseDamage}, All Damage: ${this.planes[i].fight()}`);
     }
     if (this.isDead) {
       console.log('This ship is dead, Jimmy.');
