@@ -27,24 +27,15 @@ class Reservation implements Reservationy {
   }
 }
 
-function initializeReservations(): Reservation[] {
+function initializeReservations(howManyTimes: number): Reservation[] {
   let reservations: Reservation[] = [];
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
-  reservations.push(new Reservation());
+  for (let i: number = 0; i <= Math.floor((Math.random() * howManyTimes) + 1); i++) {
+    reservations.push(new Reservation());
+  }
   return reservations;
 }
 
-let reservations = initializeReservations();
+let reservations = initializeReservations(250);
 
 for (let reservation of reservations) {
   console.log(`Booking# ${reservation.getCodeBooking()} for ${reservation.getDowBooking()}`);
