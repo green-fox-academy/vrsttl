@@ -13,7 +13,7 @@ function readFromFile(filePath: string) {
   }
 }
 
-function yearsOfMostBirths(filePath) {
+function yearsOfMostBirths(filePath): number[] {
   let splitText: string = readFromFile(filePath);
   let workingString: string[] = [];
   let wordString: string[] = [];
