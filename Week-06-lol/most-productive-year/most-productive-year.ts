@@ -8,8 +8,7 @@ function readFromFile(filePath: string): string {
   try {
     return fs.readFileSync(`${filePath}.csv`, charEncoding);
   } catch (error) {
-    console.log(`Cannot find studio, please try again later.`);
-    return null;
+    throw new Error(`Cannot find studio, please try again later.`);
   }
 }
 
@@ -46,7 +45,7 @@ function findMostProductiveYear(filePath): string {
   return `${filePath} made the most movies in ${maxYear}`;
 }
 
-console.log(findMostProductiveYear('paramount'));
+console.log(findMostProductiveYear('ghibli'));
 /** 
  * Write a function called `findMostProductiveYear` that helps you find the most productive year for a film studio.
  * The function should take one argument, which is the name of the film studio.
