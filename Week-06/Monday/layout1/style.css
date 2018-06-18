@@ -1,6 +1,6 @@
-* {
-  padding: 0;
+*{
   margin: 0;
+  padding: 0;
 }
 
 body, html {
@@ -18,16 +18,18 @@ p{
   display: flex;
   height: 100%;
   overflow: scroll;
+  margin: 20px 50px 50px 50px;
 }
 
 .container{
   display: flex;
-  top: 0;
+  top: 50;
   left: 0;
-  position: absolute;
+  margin-left: 50px;
+  position: fixed;
   background-color: purple;
   height: 100px;
-  width: 100%;
+  width: calc(100% - 100px);
   display: flex;
   list-style-type: none;
   justify-content: left;
@@ -55,3 +57,4 @@ p{
   margin-top: 100px;
   overflow-y: auto;
 }
+
