@@ -17,15 +17,17 @@ p{
 .wrapper{
   display: flex;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
   margin: 20px 50px 50px 50px;
+  margin: 0 auto;
+  width: calc(100% - 100px);
 }
 
 .container{
   display: flex;
   top: 50;
   left: 0;
-  margin-left: 50px;
+  margin: 20px 50px 0 50px;
   position: fixed;
   background-color: purple;
   height: 100px;
@@ -46,7 +48,7 @@ p{
   background-color: orange;
   flex: 2 0 0;
   height: calc(100% - 100px);
-  margin-top: 100px;
+  margin-top: 120px;
   overflow-y: auto;
 }
 
@@ -54,7 +56,7 @@ p{
   background-color: green;
   flex: 1 0 0;
   height: calc(100% - 100px);
-  margin-top: 100px;
+  margin-top: 120px;
   overflow-y: auto;
 }
 
