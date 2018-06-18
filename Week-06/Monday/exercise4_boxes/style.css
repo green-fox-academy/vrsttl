@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  width: 1200px;
+  flex-direction: column;
+  height: 100%;
+}
+
+.green {
+  background-color: green;
+  flex: 1 0 0;
+}
+
+.yellow {
+  background-color: yellow;
+  flex: 2 0 0;
+  order: 2;
+}
+
+.purple {
+  background-color: purple;
+  flex: 1 0 0;
+}
