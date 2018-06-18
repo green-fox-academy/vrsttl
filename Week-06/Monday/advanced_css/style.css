@@ -13,11 +13,11 @@ h1 {
   text-transform: uppercase;
   color: #fff;
   background-color:  #52C237;
-  position: absolute;
-  top: 0;
+  position: fixed;
   left: 0;
   right: 0;
   padding: 10px;  
+  z-index: 1;
  }
 
  .class-name {
@@ -28,11 +28,40 @@ h1 {
   box-sizing: border-box;
   color: #fff;
   overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
  }
 
  .class-container {
    padding-top: 80px;
+   display: flex;
+   flex-direction: row-reverse;
+   flex-wrap: wrap;
+   justify-content: center;
+
  }
 
  .class-item {
+   padding: 10px;
+   position: relative;
+   
+ }
+
+ .modal {
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .message {
+
  }
