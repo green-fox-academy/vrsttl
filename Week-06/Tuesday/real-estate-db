@@ -1,0 +1,32 @@
+//Basic database//
+
+Real Estate database
+--------------------
+Street   |Num | Seller | Price | Available | Date posted
+Andrassy |1 | Gawker | 100M  |    1      |  2018-01-01
+Andrassy |2 | GFA    | 100M  |    1      |  2018-01-01
+Andrassy |3 | BOOM   | 100M  |    1      |  2018-01-01
+Kossuth  |4 | BOOM   | 10M   |    1      |  2018-01-01
+1---> Normalizing data from this table:
+
+Sellers
+--------------------
+
+ID  |   Name   |  Phone   |  Email
+
+1   |  Gawker  |  113     |   null
+2   |   GFA    | 1645431  |   null
+3   |  Boom    |134131351 |   null
+
+
+Properties_Cleaning
+--------------------
+prop_id   |   cleaning_id
+    1     |       1
+    1     |       2
+
+Cleaning
+--------------------
+ID   |    service_name
+1    |     Awesome Kft.
+2    |      Clear Kft.
