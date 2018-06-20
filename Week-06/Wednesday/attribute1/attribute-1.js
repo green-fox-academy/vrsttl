@@ -1,3 +1,5 @@
+'use strict';
+
 console.log(document.querySelector('img').getAttribute('src'));
 
 document.querySelector("img").setAttribute("src", "http://allatbaratok.net/wp-content/uploads/2016/08/Ez%C3%A9rt-im%C3%A1djuk-a-golden-eetriever-kuty%C3%A1kat.-Ez-a-vide%C3%B3-garant%C3%A1ltan-mosolyt-csal-az-arcodra2-2.png");

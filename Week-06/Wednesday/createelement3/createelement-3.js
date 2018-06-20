@@ -1,3 +1,5 @@
+'use strict';
+
 const kids =
   [{ "pet_name": "Wattled crane", "owner": "Bryant" },
   { "pet_name": "Devil, tasmanian", "owner": "Alejandro" },

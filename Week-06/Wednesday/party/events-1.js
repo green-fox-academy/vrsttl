@@ -1,3 +1,5 @@
+'use strict';
+
 document.querySelector('button').onclick = function () {
   if (!(document.querySelector('body').classList.contains('party'))) {
     document.querySelector('body').classList.add('party')

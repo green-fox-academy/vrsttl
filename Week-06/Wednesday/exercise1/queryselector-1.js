@@ -1,3 +1,5 @@
+'use strict';
+
 king = document.querySelector('#b325');
 console.log(king);
 

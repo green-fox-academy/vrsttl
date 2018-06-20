@@ -1,3 +1,5 @@
+'use strict';
+
 let ul = document.querySelector('.asteroids');
 let li = document.createElement("li");
 li.appendChild(document.createTextNode("The Green Fox"));

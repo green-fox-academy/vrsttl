@@ -1,3 +1,5 @@
+'use strict';
+
 body = document.querySelectorAll('p');
 /*for (i = 0; i < body.length; i++) {
   body[i].textContent = body[body.length-1].textContent;

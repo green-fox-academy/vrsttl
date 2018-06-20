@@ -1,3 +1,5 @@
+'use strict';
+
 pArray = document.querySelectorAll('p');
 console.log(pArray);
 if (pArray[3].classList.contains('dolphin')) {

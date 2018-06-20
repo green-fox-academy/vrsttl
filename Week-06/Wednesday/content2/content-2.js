@@ -1,3 +1,5 @@
+'use strict';
+
 listItems = document.querySelectorAll('li');
 fillerItems = ['apple', 'banana', 'cat', 'dog'];
 console.log(listItems);
