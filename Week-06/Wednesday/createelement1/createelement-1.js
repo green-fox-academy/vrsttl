@@ -14,7 +14,6 @@ img = document.createElement('img');
 img.src = 'https://apillarofsociety.files.wordpress.com/2012/06/pbf085ad-lumberjack.jpg?w=720&h=283';
 document.querySelector('.container').appendChild(img);
 
-
 /*<!-- You can work in the html or in a separate js file. Like:
 <script>
   Add an item that says 'The Green Fox' to the asteroid list.

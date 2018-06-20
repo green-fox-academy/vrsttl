@@ -14,13 +14,14 @@ for (i = 0; i < conceitedKing.length; i++) {
   }
 }
 */
-/*
+
 let workingArray = [].filter.call(conceitedKing, element => (
   element.innerText === 'The King' || element.innerText === 'The Conceited Man'
 )).forEach(element => {
   alert(element.innerText);
 });
-*/
+
+
 conceitedKing = document.querySelectorAll('section div');
 conceitedKing.forEach(element => {
   console.log(element.innerText);
@@ -29,7 +30,6 @@ conceitedKing.forEach(element => {
 // conceitedKing = workingArray;
 alert(conceitedKing[0].innerText);
 alert(conceitedKing[1].innerText);
-
 
 noBusiness = document.querySelectorAll('div');
 
