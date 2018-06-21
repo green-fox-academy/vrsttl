@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
   let forwardedCocktails = [];
   if (req.query.alcohol !== undefined) {   // ?alcohol= input
     alcoholFilter = req.query.alcohol;
-    //console.log(req.query.alcohol);
     cocktails.forEach(element => {
       if (element.contains.indexOf(alcoholFilter) !== -1) {
         forwardedCocktails.push(element)
