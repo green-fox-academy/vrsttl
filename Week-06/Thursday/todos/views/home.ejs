@@ -7,9 +7,9 @@
 <body>
   <h1><%= text %></h1>
   <ul>
-    <li><%= task1 %></li>
-    <li><%= task2 %></li>
-    <li><%= task3 %></li>
+    <% task.forEach(element => { %>
+      <li><%= element %></li>
+    <% }); %>
   </ul>
 </body>
 </html>
