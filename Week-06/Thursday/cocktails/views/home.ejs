@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+<div class='toppart'>
+  <h1 class='header'>Cocktails</h1>
+  <br>
+  <br>
+  <br>
+  <ul class='drinkselector'>
+    <li class='dslink'><a href="../">All</a></li>
+    <li class='dslink'><a href="../?alcohol=gin">Gin</a></li>
+    <li class='dslink'><a href="../?alcohol=vodka">Vodka</a></li>
+    <li class='dslink'><a href="../?alcohol=rum">Rum</a></li>
+    <li class='dslink'><a href="../?alcohol=tequila">Tequila</a></li>
+  </ul>
+
+  <table class='cocktailbox'>
+    <tr>
+      <th class='tableheader'>Cocktail</th>
+      <th class='tableheaderprice'>Price</th>
+    </tr>
+    <% cocktails.forEach(element => { %>
+      <tr>
+       <td class='cocktailname'>
+          <%= element.name %> <br/> (<%= element.contains %>)
+       </td>
+      <td class='cocktailprice'>
+        <%= element.price %>
+      </td>
+      </tr>
+     <% });%>
+    </div>
+    <footer class='footer'>A gratuity charge of 12% will be added to your bill.</footer>
+  </body>
+
+</html>
