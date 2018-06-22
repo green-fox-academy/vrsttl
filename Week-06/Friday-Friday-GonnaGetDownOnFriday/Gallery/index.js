@@ -33,6 +33,32 @@ if (i !== imageArray.length - 1) {
   nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
 };
 
+rightButton.addEventListener('click', browseRight);
+leftButton.addEventListener('click', browseLeft);
+hoverText.addEventListener('mouseover', onmouseover);
+
+prevTNBox.addEventListener('click', prevToMain);
+nextTNBox.addEventListener('click', prevToMain);
+
+function nextToMain() {
+  browseRight();
+}
+
+function prevToMain() {
+  browseLeft();
+}
+
+document.onkeydown = function (e) {
+  switch (e.keyCode) {
+    case 37:
+      browseLeft();
+      break;
+    case 39:
+      browseRight();
+      break;
+  }
+};
+
 function onmouseover() {
   hoverText.style.visibility = 'visible';
   hoverText.textContent = imageArray[i].description;
@@ -44,21 +70,18 @@ function browseRight() {
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-
     i++;
   } else if (i === imageArray.length - 1) {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
-
     i = 0;
   } else {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-
     i++;
   }
 }
@@ -69,27 +92,21 @@ function browseLeft() {
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-
     i = imageArray.length - 1;
   } else if (i === imageArray.length - 1) {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
-
     i--;
   } else {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-
     i--;
   }
 }
 
-rightButton.addEventListener('click', browseRight);
-leftButton.addEventListener('click', browseLeft);
-hoverText.addEventListener('mouseover', onmouseover);
 
 
