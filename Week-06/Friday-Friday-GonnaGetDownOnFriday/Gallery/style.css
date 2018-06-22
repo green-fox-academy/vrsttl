@@ -24,7 +24,7 @@
 .arrow {
   display: flex;
   flex-grow: 1;
-  background-color: white;
+  background: linear-gradient(to top, #CFDEF3, #E0EAFC);
 }
 
 .left {
@@ -52,6 +52,7 @@
   background-color: black;
   background-size: cover;
   align-items: flex-end;
+  border-radius: 8px;
 }
 
 .hover {
@@ -64,12 +65,13 @@
 
 .thumbnailscontainer {
   display: flex;
-  width: 70%;
+  width: 40%;
   height: 100px;
-  background-color: white;
+  background: linear-gradient(to top, #CFDEF3, #E0EAFC);
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 20px;
+  opacity: 1;
 }
 
 .thumbnails {
@@ -104,5 +106,5 @@
 }
 
 .lastbox {
-  
+
 }
