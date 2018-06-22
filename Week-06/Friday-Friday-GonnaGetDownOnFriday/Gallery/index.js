@@ -17,9 +17,14 @@ let leftButton = document.querySelector('.left');
 let rightButton = document.querySelector('.right');
 let mainTNBox = document.querySelector('.mainbox');
 mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
-let prevTNBox = document.querySelector('.pre');
+
+
+/*
+let lastTNBox = document.querySelector('.last');
+*/
 let hoverText = document.querySelector('.hovertextinsert');
 
+let prevTNBox = document.querySelector('.pre');
 if (i !== 0) {
   prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
 } else {
@@ -32,32 +37,38 @@ if (i !== imageArray.length - 1) {
 } else {
   nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
 };
+/*
+let firstTNBox = document.querySelector('.firstbox');
 
+if (i == 0) {
+  firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
+} else if (i == 1) {
+  firstTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+} else {
+  firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 2].thumbnail})`;
+};
+*/
 rightButton.addEventListener('click', browseRight);
 leftButton.addEventListener('click', browseLeft);
 hoverText.addEventListener('mouseover', onmouseover);
-
-prevTNBox.addEventListener('click', prevToMain);
-nextTNBox.addEventListener('click', prevToMain);
-
-function nextToMain() {
-  browseRight();
-}
-
-function prevToMain() {
-  browseLeft();
-}
-
-document.onkeydown = function (e) {
-  switch (e.keyCode) {
-    case 37:
-      browseLeft();
-      break;
-    case 39:
-      browseRight();
-      break;
+/*
+firstTNBox.addEventListener('click', firstToMain);
+lastTNBox.addEventListener('click', lastToMain);
+*/
+prevTNBox.addEventListener('click', browseLeft);
+nextTNBox.addEventListener('click', browseRight);
+/*
+function firstToMain() {
+  if (i === 0) {
+    currentImage.style.backgroundImage = `url(${imageArray[imageArray.length - 1].url})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    i++;
   }
-};
+}
+*/
+
 
 function onmouseover() {
   hoverText.style.visibility = 'visible';
@@ -66,47 +77,78 @@ function onmouseover() {
 
 function browseRight() {
   if (i === 0) {
-    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
-    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
-    prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
-    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     i++;
-  } else if (i === imageArray.length - 1) {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    console.log(i);
+  } else if (i === imageArray.length - 2) {
+    currentImage.style.backgroundImage = `url(${imageArray[i + 1].url})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
+    i++;
+    console.log(i);
+  }
+  else if (i === imageArray.length - 1) {
+    currentImage.style.backgroundImage = `url(${imageArray[0].url})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[1].thumbnail})`;
     i = 0;
+    console.log(i);
   } else {
+    i++;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-    i++;
+    console.log(i);
   }
 }
 
 function browseLeft() {
   if (i === 0) {
-    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
-    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
-    prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
-    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     i = imageArray.length - 1;
-  } else if (i === imageArray.length - 1) {
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
+    console.log(i);
+  } else if (i === imageArray.length - 1) {
     i--;
-  } else {
+    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
+    console.log(i);
+  } else if (i === 1) {
+    i = 0;
+    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    console.log(i);
+    } else {
+    i--;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
-    i--;
+    console.log(i);
   }
 }
 
+document.onkeydown = function (e) {
+  switch (event.key) {
+    case "ArrowLeft":
+      browseLeft();
+      break;
+    case "ArrowRight":
+      browseRight();
+      break;
+  }
+};
 
 
