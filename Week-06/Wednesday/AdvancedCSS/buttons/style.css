@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: navy;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.three {
+  display: flex;
+  width: 520px;
+  height: 110px;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  flex-grow: 1;
+  height: 60px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(211, 210, 210);
+}
+
+.box:hover {
+  filter: brightness(110%);
+}
+
+.box:active {
+  filter: brightness(90%);
+}
+
+.blue {
+  background-color: rgb(62, 62, 187);
+  box-shadow: 0 2px inset rgb(77, 77, 218), 0 -5px hsl(240, 55%, 34%) inset;
+}
+
+.green {
+  background-color: rgb(46, 167, 46);
+  box-shadow: 0 2px inset #35c035, 0 -5px #1f7a1f inset;
+}
+
+.red {
+  background-color: rgb(221, 65, 65);
+  box-shadow: 0 2px inset rgb(236, 87, 87), 0 -5px #a52d2d inset;
+}
+
+.light {
+  background-color: rgb(60, 126, 224);
+  box-shadow: 0 2px inset #3b89ff, 0 -5px #2e6cc9 inset;
+}
+
+.black {
+  background-color: rgb(37, 37, 37);
+  box-shadow: 0 2px inset rgb(68, 68, 68), 0 -5px rgb(29, 29, 29) inset;
+}
+
+.white {
+  background-color: rgb(226, 226, 226);
+  color: rgb(92, 88, 88);
+  box-shadow: 0 2px inset rgb(249, 249, 250), 0 -5px rgb(158, 158, 158) inset;
+}
