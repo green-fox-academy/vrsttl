@@ -75,7 +75,8 @@
   background-color: rgb(73, 72, 72);
   bottom: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
+  font-size: 30px;
+  text-emphasis: em;
   position: relative;
   height: 30%;
   width: 100%;
@@ -123,3 +124,6 @@
   border-width: 4px;
   border-color: #708090;
 }
+
+
+  

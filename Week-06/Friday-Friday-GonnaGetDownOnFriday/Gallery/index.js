@@ -15,10 +15,10 @@ let currentImage = document.querySelector('.image');
 currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
 let leftButton = document.querySelector('.left');
 let rightButton = document.querySelector('.right');
-let mainTNBox = document.querySelector('.mainbox');
-mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
 let textBox = document.querySelector('.text');
 textBox.innerHTML = imageArray[0].description;
+let mainTNBox = document.querySelector('.mainbox');
+mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
 
 let firstTNBox = document.querySelector('.firstbox');
 if (i === 0) {
@@ -27,15 +27,6 @@ if (i === 0) {
   firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
 } else {
   firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
-}
-
-let lastTNBox = document.querySelector('.lastbox');
-if (i === imageArray.length - 1) {
-  lastTNBox.style.backgroundImage = `url(${imageArray[1].thumbnail})`;
-} else if (i === imageArray.length - 2) {
-  lastTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
-} else {
-  lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
 }
 
 let prevTNBox = document.querySelector('.pre');
@@ -52,6 +43,14 @@ if (i !== imageArray.length - 1) {
   nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
 };
 
+let lastTNBox = document.querySelector('.lastbox');
+if (i === imageArray.length - 1) {
+  lastTNBox.style.backgroundImage = `url(${imageArray[1].thumbnail})`;
+} else if (i === imageArray.length - 2) {
+  lastTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
+} else {
+  lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
+}
 
 rightButton.addEventListener('click', browseRight);
 leftButton.addEventListener('click', browseLeft);
@@ -61,7 +60,6 @@ nextTNBox.addEventListener('click', browseRight);
 
 function browseRight() {
   if (i === imageArray.length - 1) {
-    console.log(i);
     i = 0;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 2].thumbnail})`;
@@ -70,9 +68,7 @@ function browseRight() {
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
-    console.log(i);
   } else if (i === imageArray.length - 2) {
-    console.log(i);
     i++;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
@@ -81,9 +77,7 @@ function browseRight() {
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
     lastTNBox.style.backgroundImage = `url(${imageArray[1].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
-    console.log(i);
   } else if (i === imageArray.length - 3) {
-    console.log(i);
     i++;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
@@ -92,9 +86,7 @@ function browseRight() {
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     lastTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
-    console.log(i);
   } else if (i === 0) {
-    console.log(i);
     i++;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
@@ -103,10 +95,8 @@ function browseRight() {
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
-    console.log(i);
   }
   else {
-    console.log(i);
     i++;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
     firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
@@ -115,31 +105,53 @@ function browseRight() {
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
     lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
-    console.log(i);
   }
-
 }
 function browseLeft() {
   if (i === 0) {
     i = imageArray.length - 1;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
-    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
+    lastTNBox.style.backgroundImage = `url(${imageArray[1].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
   } else if (i === 1) {
     i--;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
-    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 2].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
+    textBox.innerHTML = imageArray[i].description;
+  } else if (i === 2) {
+    i--;
+    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
+    firstTNBox.style.backgroundImage = `url(${imageArray[imageArray.length - 1].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
+    textBox.innerHTML = imageArray[i].description;
+  } else if (i === imageArray.length - 1) {
+    i--;
+    currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
+    firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
+    prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    lastTNBox.style.backgroundImage = `url(${imageArray[0].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
   } else {
     i--;
     currentImage.style.backgroundImage = `url(${imageArray[i].url})`;
-    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
+    firstTNBox.style.backgroundImage = `url(${imageArray[i - 2].thumbnail})`;
     prevTNBox.style.backgroundImage = `url(${imageArray[i - 1].thumbnail})`;
+    mainTNBox.style.backgroundImage = `url(${imageArray[i].thumbnail})`;
     nextTNBox.style.backgroundImage = `url(${imageArray[i + 1].thumbnail})`;
+    lastTNBox.style.backgroundImage = `url(${imageArray[i + 2].thumbnail})`;
     textBox.innerHTML = imageArray[i].description;
   }
 }
