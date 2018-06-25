@@ -76,16 +76,53 @@ app.post('/dountil/:what', (req, res) => {
   if (task === 'sum') {
     res.json({
       result: `${adder(number)}`,
-    })
+    });
   } else if (task === 'factor') {
     res.json({
       result: `${factorial(number)}`,
-    })
+    });
   } else if (typeof number !== number) {
     res.json({
       error: "Please provide a number!"
-    })
+    });
   }
+});
+
+app.post('/arrays', (req, res) => {
+  let task = req.body.what;
+  let numbers = req.body.numbers;
+  
+  if (task === 'sum') {
+    let output = 0;
+    numbers.forEach(element => {
+      output += element;
+    });
+    res.json({
+      result: `${output}`,
+    });
+  } else if (task === 'multiply') {
+    let output = 0;
+    output = numbers[0];
+    for (let i = 1; i < numbers.length; i++) {
+      output = output * numbers[i];
+    }
+    res.json({
+      result: `${output}`,
+    });
+  } else if (task === 'double') {
+    let output = [];
+    numbers.forEach(element => {
+      output.push(element * 2);
+    });
+    res.json({
+      result: `${output}`,
+    });
+  } else {
+    res.json({
+      error: "Please provide what to do with the numbers!"
+    });
+  }
+
 });
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
