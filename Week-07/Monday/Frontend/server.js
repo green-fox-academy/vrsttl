@@ -126,7 +126,7 @@ app.post('/arrays', (req, res) => {
 
 app.post('/sith', (req, res) => {
   let text = req.body.text;
-  if (typeof text !== 'string') {
+  if (text !== null && text !== undefined && text !== '') {
     let textArray = text.split('. ');
     let jumbledWords1 = textArray[0].split(' ');
     let jumbledWords2 = textArray[1].split(' ');
@@ -150,7 +150,7 @@ app.post('/sith', (req, res) => {
     output = [];
 
     for (let i = 0; i < jumbledWords2.length; i++) {
-      if (i % 2 === 1 && jumbledWords2.length % 2 !== 0) {
+      if (i % 2 === 1) {
         if (i === 1) {
           output.push(jumbledWords2[i]);
           output.push(jumbledWords2[0]);
