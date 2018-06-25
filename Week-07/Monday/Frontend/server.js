@@ -91,7 +91,7 @@ app.post('/dountil/:what', (req, res) => {
 app.post('/arrays', (req, res) => {
   let task = req.body.what;
   let numbers = req.body.numbers;
-  
+
   if (task === 'sum') {
     let output = 0;
     numbers.forEach(element => {
@@ -122,8 +122,78 @@ app.post('/arrays', (req, res) => {
       error: "Please provide what to do with the numbers!"
     });
   }
-
 });
+
+app.post('/sith', (req, res) => {
+  let text = req.body.text;
+  if (typeof text !== 'string') {
+    let textArray = text.split('. ');
+    let jumbledWords1 = textArray[0].split(' ');
+    let jumbledWords2 = textArray[1].split(' ');
+    let output = [];
+
+    for (let i = 0; i < jumbledWords1.length; i++) {
+      if (i % 2 === 1 && jumbledWords1.length % 2 !== 0) {
+        if (i === 1) {
+          output.push(jumbledWords1[i]);
+          output.push(jumbledWords1[0]);
+        } else {
+          output.push(jumbledWords1[i]);
+          output.push(jumbledWords1[i - 1]);
+        }
+      } else if (i % 2 === 0 && i === jumbledWords1.length - 1) {
+        output.push(jumbledWords1[i]);
+      }
+    }
+
+    jumbledWords1 = output;
+    output = [];
+
+    for (let i = 0; i < jumbledWords2.length; i++) {
+      if (i % 2 === 1 && jumbledWords2.length % 2 !== 0) {
+        if (i === 1) {
+          output.push(jumbledWords2[i]);
+          output.push(jumbledWords2[0]);
+        } else {
+          output.push(jumbledWords2[i]);
+          output.push(jumbledWords2[i - 1]);
+        }
+      } else if (i % 2 === 0 && i === jumbledWords2.length - 1) {
+        output.push(jumbledWords2[i]);
+      }
+    }
+    jumbledWords2 = output;
+    output = '';
+
+    let bufferOutput = jumbledWords1.join(' ').toLowerCase() + '.';
+    let firstLetter1 = bufferOutput.charAt(0);
+
+    bufferOutput = bufferOutput.replace(bufferOutput.charAt(0), firstLetter1.toUpperCase());
+
+    let mumboJumbo = ['Err.eeeerrr...errr', 'Harrmharmm', 'Hmmm-rrr-mhrmahrm'];
+    let mumbo = mumboJumbo[Math.floor(Math.random() * (3)) + 0] + '. ';
+
+    output = bufferOutput + ' ' + mumbo;
+
+    bufferOutput = jumbledWords2.join(' ').toLowerCase();
+    firstLetter1 = bufferOutput.charAt(0);
+    bufferOutput = bufferOutput.replace(bufferOutput.charAt(0), firstLetter1.toUpperCase());
+    mumbo = mumboJumbo[Math.floor(Math.random() * (3)) + 0] + '. ';
+    output = output + bufferOutput + ' ' + mumbo;
+    console.log(output);
+    if (text !== null || typeof text !== string) {
+      res.json({
+        sith_text: `${output}`,
+      });
+    }
+  }
+  else {
+    res.json({
+      error: "Feed me some text you have to, padawan young you are. Hmmm."
+    });
+  };
+})
+
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
-});
+})
