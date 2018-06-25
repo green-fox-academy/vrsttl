@@ -194,6 +194,31 @@ app.post('/sith', (req, res) => {
   };
 })
 
+app.post('/translate', (req, res) => {
+  let text = req.body.text;
+  let lang = req.body.lang;
+  if (text !== null && text !== undefined && lang !== null && lang !== undefined && text !== '' && lang !== '') {
+    let textArray = text.split('');
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ö', 'ő', 'ú', 'ü', 'ű'];
+    vowels.forEach(element => {
+      for (let i = 0; i < textArray.length; i++) {
+        if (textArray[i] === element) {
+          textArray[i] += `v${textArray[i]}`;
+        }
+      }
+    });
+    let teveOutput = textArray.join('');
+    res.json({
+      translated: `${teveOutput}`,
+      lang: 'teve'
+    });
+  } else {
+    res.json({
+      error: "I can't translate that!"
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
 })
