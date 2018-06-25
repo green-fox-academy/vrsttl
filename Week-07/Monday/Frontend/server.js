@@ -199,7 +199,7 @@ app.post('/translate', (req, res) => {
   let lang = req.body.lang;
   if (text !== null && text !== undefined && lang !== null && lang !== undefined && text !== '' && lang !== '') {
     let textArray = text.split('');
-    let vowels = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ö', 'ő', 'ú', 'ü', 'ű'];
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'];
     vowels.forEach(element => {
       for (let i = 0; i < textArray.length; i++) {
         if (textArray[i] === element) {
