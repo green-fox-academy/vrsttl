@@ -86,8 +86,8 @@ app.post('/posts', (req, res) => {
 });
 
 app.put(`/posts/:id/upvote`, (req, res) => {
-  let vote = req.body.vote;
-  let id = req.params.id;
+  const vote = req.body.vote;
+  const id = req.params.id;
   let sql = '';
   if (vote === 1) {
     sql = `UPDATE posts SET score = score + 1, vote ="${vote}" WHERE id = ${id};`;
@@ -114,8 +114,8 @@ app.put(`/posts/:id/upvote`, (req, res) => {
 });
 
 app.put(`/posts/:id/downvote`, (req, res) => {
-  let vote = req.body.vote;
-  let id = req.params.id;
+  const vote = req.body.vote;
+  const id = req.params.id;
   let sql = '';
   if (vote === -1) {
     sql = `UPDATE posts SET score = score - 1, vote ="${vote}" WHERE id = ${id};`;
@@ -142,9 +142,9 @@ app.put(`/posts/:id/downvote`, (req, res) => {
 });
 
 app.put(`/posts/:id`, (req, res) => {
-  let url = req.body.url;
-  let title = req.body.title;
-  let id = req.params.id;
+  const url = req.body.url;
+  const title = req.body.title;
+  const id = req.params.id;
   let sql = '';
   sql = `UPDATE posts SET title="${title}", url="${url}" WHERE id = ${id};`;
   conn.query(sql, (err, rows) => {
@@ -168,7 +168,7 @@ app.put(`/posts/:id`, (req, res) => {
 });
 
 app.delete(`/posts/:id`, (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   let sql = `SELECT * FROM posts WHERE id = ${id};`
   conn.query(sql, (err, rows) => {
     if (err) {
@@ -187,8 +187,7 @@ app.delete(`/posts/:id`, (req, res) => {
       res.json({
         delRows
       });
-    }
-    );
+    });
   });
 });
 
