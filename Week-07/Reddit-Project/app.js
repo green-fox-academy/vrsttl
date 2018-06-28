@@ -141,10 +141,35 @@ app.put(`/posts/:id/downvote`, (req, res) => {
   });
 });
 
+app.put(`/posts/:id`, (req, res) => {
+  let url = req.body.url;
+  let title = req.body.title;
+  let id = req.params.id;
+  let sql = '';
+  sql = `UPDATE posts SET title="${title}", url="${url}" WHERE id = ${id};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    sql = `SELECT * FROM posts WHERE id = ${id};`
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      }
+      res.json({
+        rows
+      });
+    });
+  });
+});
+
 app.delete(`/posts/:id`, (req, res) => {
   let id = req.params.id;
   let sql = `SELECT * FROM posts WHERE id = ${id};`
-
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);
@@ -152,7 +177,6 @@ app.delete(`/posts/:id`, (req, res) => {
       return;
     }
     const delRows = rows;
-    console.log(delRows);
     sql = `DELETE FROM posts WHERE id = ${id};`;
     conn.query(sql, (err, rows) => {
       if (err) {
