@@ -55,23 +55,33 @@ app.get('/posts', (req, res) => {
 
 app.post('/posts', (req, res) => {
   let sql = `INSERT INTO posts (title, url, timestamp, score, owner) VALUES ("${req.body.title}", "${req.body.url}", unix_timestamp(), "0", "${req.body.owner}");`;
-  sql = `INSERT INTO users (username) VALUES ("${req.body.owner}");`
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);
       res.status(500).send();
       return;
     }
-    sql = `SELECT * FROM posts WHERE id = ${rows.insertId};`
+    const insID = rows.insertId;
+    sql = `INSERT INTO users (username)
+    SELECT '${req.body.owner}' WHERE NOT EXISTS (SELECT * FROM users WHERE username='${req.body.owner}');`;
+    
+
     conn.query(sql, (err, rows) => {
       if (err) {
         console.log(err);
         res.status(500).send();
         return;
       }
-      res.status(200).send;
-      res.json({
-        rows
+      sql = `SELECT * FROM posts WHERE id = ${insID};`
+      conn.query(sql, (err, rows) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send();
+          return;
+        }
+        res.json({
+          rows
+        });
       });
     });
   });
