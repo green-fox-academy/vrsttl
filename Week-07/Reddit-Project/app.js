@@ -16,6 +16,8 @@ app.use(express.static(__dirname));
 
 app.use(express.json());
 
+
+
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -70,6 +72,32 @@ app.post('/posts', (req, res) => {
   });
 });
 
+app.put(`/posts/:id/upvote`, (req, res) => {
+  let vote = req.body.vote;
+  let id = req.params.id;
+  let sql = '';
+  if (vote === 1) {
+    sql = `UPDATE posts SET score = score + 1, vote ="${vote}" WHERE id = ${id};`;
+  }
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    sql = `SELECT * FROM posts WHERE id = ${id};`
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      }
+      res.json({
+        rows
+      });
+    });
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server up and running on port ${PORT}.`);
