@@ -45,7 +45,7 @@ app.get('/posts', (req, res) => {
       res.status(500).send();
       return;
     } else {
-      res.status(200).send;
+      res.status(200).send();
       res.json({
         posts: rows
       });
@@ -64,8 +64,6 @@ app.post('/posts', (req, res) => {
     const insID = rows.insertId;
     sql = `INSERT INTO users (username)
     SELECT '${req.body.owner}' WHERE NOT EXISTS (SELECT * FROM users WHERE username='${req.body.owner}');`;
-    
-
     conn.query(sql, (err, rows) => {
       if (err) {
         console.log(err);
@@ -107,7 +105,7 @@ app.put(`/posts/:id/upvote`, (req, res) => {
         res.status(500).send();
         return;
       }
-      res.status(200).send;
+      res.status(200).send();
       res.json({
         rows
       });
@@ -135,11 +133,38 @@ app.put(`/posts/:id/downvote`, (req, res) => {
         res.status(500).send();
         return;
       }
-      res.status(200).send;
+      res.status(200).send();
       res.json({
         rows
       });
     });
+  });
+});
+
+app.delete(`/posts/:id`, (req, res) => {
+  let id = req.params.id;
+  let sql = `SELECT * FROM posts WHERE id = ${id};`
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    const delRows = rows;
+    console.log(delRows);
+    sql = `DELETE FROM posts WHERE id = ${id};`;
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      }
+      res.json({
+        delRows
+      });
+    }
+    );
   });
 });
 
