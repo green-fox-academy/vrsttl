@@ -45,7 +45,7 @@ app.get('/posts', (req, res) => {
       res.status(500).send();
       return;
     } else {
-      res.status(200).send();
+      //res.status(200).send();
       res.json({
         posts: rows
       });
@@ -105,7 +105,7 @@ app.put(`/posts/:id/upvote`, (req, res) => {
         res.status(500).send();
         return;
       }
-      res.status(200).send();
+      //res.status(200).send();
       res.json({
         rows
       });
@@ -133,7 +133,6 @@ app.put(`/posts/:id/downvote`, (req, res) => {
         res.status(500).send();
         return;
       }
-      res.status(200).send();
       res.json({
         rows
       });
