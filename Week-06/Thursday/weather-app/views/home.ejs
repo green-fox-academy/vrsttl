@@ -10,7 +10,8 @@
 </head>
 
 <body>
-  <% cities.forEach(element => { %>
+  <% cities.forEach((element,index) => { %>
+    <a href=http://localhost:3000/cities/<%= index %>>
     <div class='tilecontainer'>
       <div class='cityname'>
         <%= element.city %>
@@ -25,6 +26,7 @@
         <img class='icon' src=/static/images/<%=element.icon %>.png>
       </div>
     </div>
+  </a>
     <% }); %>
 </body>
 

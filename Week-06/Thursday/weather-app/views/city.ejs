@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/static/city.css">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <% dayinfo.forEach(element => { %>
+    <div class='tilecontainer'>
+      <img class='icon' src=/static/images/<%= element.icon %>.png>      
+      <div class='temperature'>
+        <%= element.temp %>
+      </div>
+      <div class='message'>
+        <%= element.message %>
+      </div>
+    </div>
+    <% }); %>
+</body>
+
+</html>

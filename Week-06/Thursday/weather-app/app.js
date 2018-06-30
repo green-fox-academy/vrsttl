@@ -66,12 +66,12 @@ app.use('/static', express.static('static'));
 
 app.get('/', (req, res) => {
   let forwardedBasicInfo = [];
-  forecasts.forEach(element => {  
+  forecasts.forEach(element => {
     let currentCity = {
-      city:element.city,
-      location:element.location,
-      temp:element.weather[0].temp,
-      icon:element.weather[0].icon
+      city: element.city,
+      location: element.location,
+      temp: element.weather[0].temp,
+      icon: element.weather[0].icon
     }
     forwardedBasicInfo.push(currentCity);
   });
@@ -80,6 +80,30 @@ app.get('/', (req, res) => {
   res.render('home', {
     title: 'Weather forecast splash page',
     cities: forwardedBasicInfo,
+  });
+});
+
+app.get('/cities/:cityid', (req, res) => {
+  let cityCode = req.params.cityid;
+  let cityInfo = [];
+  let city = '';
+  forecasts.forEach((element, index) => {
+    if (parseInt(cityCode) === index) {
+      city = element.city;
+      element.weather.forEach(day => {
+        let tileOfTheDay = {
+          temp: day.temp,
+          icon: day.icon,
+          message: day.message
+        }
+        cityInfo.push(tileOfTheDay);
+      });
+    }
+  });
+  console.log(cityInfo);
+  res.render('city', {
+    title: `Weather data for ${city}`,
+    dayinfo: cityInfo,
   });
 });
 
