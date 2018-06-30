@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <% cities.forEach(element => { %>
+    <div class='tilecontainer'>
+      <div class='cityname'>
+        <%= element.city %>
+      </div>
+      <div class='citylocation'>
+        <%= element.location %>
+      </div>
+      <div class='weatherinfo'>
+        <div class='temperature'>
+          <%= element.temp %>
+        </div>
+        <img class='icon' src=/static/images/<%=element.icon %>.png>
+      </div>
+    </div>
+    <% }); %>
+</body>
+
+</html>
