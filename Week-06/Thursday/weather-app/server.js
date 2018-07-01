@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const port = 3000;
 const forecasts = [
   {
     city: 'Seattle',
@@ -62,7 +62,8 @@ const forecasts = [
 ];
 
 app.set('view engine', 'ejs');
-app.use('/static', express.static('static'));
+//app.use('/static', express.static('static'));
+app.use('/static', express.static(__dirname + '/static'));
 
 app.get('/', (req, res) => {
   let forwardedBasicInfo = [];
@@ -80,6 +81,7 @@ app.get('/', (req, res) => {
   res.render('home', {
     title: 'Weather forecast splash page',
     cities: forwardedBasicInfo,
+    appurl: app.url
   });
 });
 
@@ -106,7 +108,11 @@ app.get('/cities/:cityid', (req, res) => {
     dayinfo: cityInfo,
   });
 });
+/*
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Listening on port ${PORT}`, app.url);
+});*/
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`App running on port ${port}`);
 });
