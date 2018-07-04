@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Disabled buttons</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
+</head>
+
+<body>
+  <div class='wrapper'>
+    <form>
+      <h2>What is your favorite pet?</h2>
+      <div class='pet-selector'>
+        <label>
+          <input id='dog' type="radio" name="radio-buttons">
+          <span>Dog</span>
+        </label>
+        <label>
+          <input id='cat' type="radio" name="radio-buttons">
+          <span>Cat</span>
+        </label>
+        <label>
+          <input id='victor' type="radio" name="radio-buttons">
+          <span>Viktor the goldfish</span>
+        </label>
+      </div>
+      <h2>Do you want to sign up for cat facts?</h2>
+      <div class='sign-up-radio'>
+        <label>
+          <input id='yes' type="radio" name="signup">
+          <span>Yes</span>
+        </label>
+        <label>
+          <input id='no' type="radio" name="signup">
+          <span>No</span>
+        </label>
+      </div>
+      <div class='catlover'><button type="button" id='cats' disabled>I love cats!</button></div>
+      <div class='sign-up'><button type="button" id='su' disabled>Sign up</button></div>
+    </form>
+  </div>
+  <script src='frontend.js'></script>
+</body>
+
+</html>
