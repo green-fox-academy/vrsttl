@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-
+const path = require('path');
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
@@ -14,8 +14,11 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static('./public'));
-
+//app.use(express.static(path.join(__dirname , 'views')));
+app.use('/frontend', express.static(path.join(__dirname , 'frontend')));
+//app.set('view engine', 'ejs');
 app.use(express.json());
+
 
 const conn = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -25,19 +28,20 @@ const conn = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-  console.log(req.headers);
+  //console.log(req.headers);
   res.sendFile('./public' + '/index.html');
 })
 
 app.get('/hello', (req, res) => {
-  console.log(req.headers);
+  //console.log(req.headers);
   res.send({
     string: 'Hello World!'
   });
 });
 
 app.get('/posts', (req, res) => {
-  console.log(req.headers);
+ 
+  //console.log(req.headers);
   let sql = 'SELECT * from posts;';
   conn.query(sql, (err, rows) => {
     if (err) {
