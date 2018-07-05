@@ -13,9 +13,15 @@
   <form class='modify-form'>
     <input type="text" name="content" id="content" placeholder="Type your new post here...">
     <input type="url" name="url" id="url" placeholder="Type your new URL here...">
+    <input type="hidden" class='hidden' name="modify-id">
     <button class ='modify' type="submit">Submit</button>
   </form>
-  <form class='submit'></form>
+  <form class='submit-form'>
+    <input type="text" name="nickname" class="nickname" placeholder="Type your nickname...">
+    <input type="text" name="new-content" id="new-content" placeholder="Type your new post here...">
+    <input type="url" name="new-url" id="new-url" placeholder="Type your new URL here...">
+    <button class ='submit-new' type="submit">Submit</button>
+  </form>
   
   <script src='../frontend/frontend.js'></script>
 </body>
