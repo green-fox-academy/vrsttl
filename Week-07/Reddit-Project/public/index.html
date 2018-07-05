@@ -3,26 +3,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Reddit clone</title>
+  <title>News of Australia</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <div></div>
-  <table></table>
-  <form class='modify-form'>
-    <input type="text" name="content" id="content" placeholder="Type your new post here...">
-    <input type="url" name="url" id="url" placeholder="Type your new URL here...">
-    <input type="hidden" class='hidden' name="modify-id">
-    <button class ='modify' type="submit">Submit</button>
-  </form>
-  <form class='submit-form'>
-    <input type="text" name="nickname" class="nickname" placeholder="Type your nickname...">
-    <input type="text" name="new-content" id="new-content" placeholder="Type your new post here...">
-    <input type="url" name="new-url" id="new-url" placeholder="Type your new URL here...">
-    <button class ='submit-new' type="submit">Submit</button>
-  </form>
-  
+  <div class="wrapper">
+    <div class="headline"></div>
+    <div class="tables-forms">
+      <table class="table-main"></table>
+      <form class='modify-form'>
+        <div class='textbox'>
+          <input type="text" name="content" id="content" placeholder="Type your new post here...">
+        </div>
+        <div class='textbox'>
+          <input type="url" name="url" id="url" placeholder="Type your new URL here...">
+        </div>
+        <input type="hidden" class='hidden' name="modify-id">
+        <button class='modify' type="submit">Submit</button>
+      </form>
+      <form class='submit-form'>
+        <div class='textbox'>
+          <input type="text" name="nickname" class="nickname" placeholder="Type your nickname...">
+        </div>
+        <div class='textbox'>
+          <input type="text" name="new-content" id="new-content" placeholder="Type your new post here...">
+        </div>
+        <div class='textbox'>
+          <input type="url" name="new-url" id="new-url" placeholder="Type your new URL here...">
+        </div>
+        <button class='submit-new' type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
   <script src='../frontend/frontend.js'></script>
 </body>
 

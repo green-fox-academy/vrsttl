@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-family: 'Lato', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.headline {
+  background-color: grey;
+  width: 100%;
+  height: 350px;
+}
+
+.tables-forms {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-main {
+  display: flex;
+  width: 1200px;
+  height: 100%;
+  flex-flow: column;
+}
+
+tr {
+  display: table-row;
+  justify-content: space-between;
+  height: 160px;
+  width: 100%;
+  background-color: yellow;
+}
+
+td {
+  width: 180px;
+  height: 100px;
+  word-wrap: normal;
+  text-align: center;
+  background-color: brown;
+}
+
+.buttondiv {
+  background-color: green;
+  width: 180px;
+  height: 100px;
+}
+
+button {
+  width: 20px;
+  height: 20px;
+}
