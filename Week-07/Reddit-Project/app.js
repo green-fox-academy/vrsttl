@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.static('./public'));
+app.use('/public', express.static('public'));
 //app.use(express.static(path.join(__dirname , 'views')));
 app.use('/frontend', express.static(path.join(__dirname , 'frontend')));
 //app.set('view engine', 'ejs');
@@ -29,7 +29,7 @@ const conn = mysql.createConnection({
 
 app.get('/', (req, res) => {
   //console.log(req.headers);
-  res.sendFile('./public' + '/index.html');
+  res.sendFile(path.join(__dirname,'public', 'index.html'));
 })
 
 app.get('/hello', (req, res) => {

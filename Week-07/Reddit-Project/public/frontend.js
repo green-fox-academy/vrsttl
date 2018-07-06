@@ -31,13 +31,14 @@ http.onload = () => {
             modifyPostTextBox.value = '';
             modifyURLTextBox.value = '';
             hiddenFormTextBox.value = '';
+            modifyForm.style.display = "none";
+
         }
         submit.send(JSON.stringify({
             title: modifyPostTextBox.value,
             url: modifyURLTextBox.value,
             owner: hiddenFormTextBox.value
         }));
-        modifyForm.display = "none";
     });
 
     submitForm.addEventListener('submit', () => {
@@ -67,43 +68,46 @@ http.onload = () => {
 
     function createTableRows(element, index) {
         let tableRow = document.createElement('tr');
+        let rowDiv = document.createElement('div');
+        rowDiv.classList.add('row-div');
         table.appendChild(tableRow);
+        tableRow.appendChild(rowDiv);
         let titleCell = document.createElement('td');
         let sqlId = document.createElement('div');
-        //sqlId.innerText = element.id;
+        sqlId.innerText = element.id;
         sqlId.classList.add(`idForDom${element.id}`);
         sqlId.classList.add('sqlidnumber');
         table.appendChild(sqlId);
         console.log(sqlId);
         titleCell.innerHTML = element.title;
         titleCell.classList.add(`titleIdForDom${element.id}`);
-        tableRow.appendChild(titleCell);
+        rowDiv.appendChild(titleCell);
         let urlCell = document.createElement('td');
         urlCell.innerHTML = element.URL;
         urlCell.classList.add(`urlIdForDom${element.id}`);
-        tableRow.appendChild(urlCell);
+        rowDiv.appendChild(urlCell);
         let ownerCell = document.createElement('td');
         ownerCell.innerHTML = element.owner;
         ownerCell.classList.add(`ownerIdForDom${element.id}`);
-        tableRow.appendChild(ownerCell);
+        rowDiv.appendChild(ownerCell);
         let scoreCell = document.createElement('td');
         scoreCell.innerHTML = element.score;
         scoreCell.classList.add(`scorecard-sc${index}`);
         scoreCell.classList.add(`scoreIdForDom${element.id}`);
-        tableRow.appendChild(scoreCell);
+        rowDiv.appendChild(scoreCell);
         //let upVoteCell = document.createElement('td');
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('buttondiv');
-        tableRow.appendChild(buttonDiv);
+        rowDiv.appendChild(buttonDiv);
         let upVoteButton = document.createElement('button');
         upVoteButton.classList.add('up');
-        upVoteButton.innerText = '+1';
+        //upVoteButton.innerText = '+1';
         buttonDiv.appendChild(upVoteButton);
         //tableRow.appendChild(upVoteCell);
         //let downVoteCell = document.createElement('td');
         let downVoteButton = document.createElement('button');
         downVoteButton.classList.add('down');
-        downVoteButton.innerText = '-1';
+        //downVoteButton.innerText = '-1';
         buttonDiv.appendChild(downVoteButton);
         //tableRow.appendChild(downVoteCell);
         let modify = document.createElement('a');
@@ -118,7 +122,7 @@ http.onload = () => {
             modifyURLTextBox.value = modify.name;
             hiddenFormTextBox.value = modify.id;
         });
-        sqlId.appendChild(modify);
+        rowDiv.appendChild(modify);
         let deletePost = document.createElement('a');
         deletePost.classList.add('delete');
         deletePost.innerHTML = 'Delete';
@@ -130,7 +134,7 @@ http.onload = () => {
                 id: element.id
             }));
         });
-        sqlId.appendChild(deletePost);
+        rowDiv.appendChild(deletePost);
     }
 
     function getPosts(fromSQL) {
