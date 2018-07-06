@@ -10,7 +10,12 @@ http.onload = () => {
     let nickname = document.querySelector('.nickname');
     let newContent = document.querySelector('#new-content');
     let newUrl = document.querySelector('#new-url');
+    const submitLink = document.querySelector('.submit-link');
     modifyForm.style.display = "none";
+    submitForm.style.display = "none";
+    submitLink.addEventListener('click', (e) =>{
+        submitForm.style.display = 'initial';
+    });
     modifyForm.addEventListener('submit', (e) => {
         e.preventDefault();
     });
@@ -52,6 +57,7 @@ http.onload = () => {
             newContent.value = '';
             newUrl.value = '';
             nickname.value = '';
+            submitForm.style.display = "none";
         }
         submit.send(JSON.stringify({
             title: newContent.value,
@@ -75,6 +81,7 @@ http.onload = () => {
         let titleCell = document.createElement('td');
         let sqlId = document.createElement('div');
         sqlId.innerText = element.id;
+        sqlId.style.display = 'none';
         sqlId.classList.add(`idForDom${element.id}`);
         sqlId.classList.add('sqlidnumber');
         table.appendChild(sqlId);
@@ -83,7 +90,10 @@ http.onload = () => {
         titleCell.classList.add(`titleIdForDom${element.id}`);
         rowDiv.appendChild(titleCell);
         let urlCell = document.createElement('td');
-        urlCell.innerHTML = element.URL;
+        let urlLink = document.createElement('a');
+        urlLink.href=element.URL;
+        urlLink.innerHTML = element.URL;
+        urlCell.appendChild(urlLink);
         urlCell.classList.add(`urlIdForDom${element.id}`);
         rowDiv.appendChild(urlCell);
         let ownerCell = document.createElement('td');

@@ -14,15 +14,21 @@
     <div class="tables-forms">
       <table class="table-main"></table>
       <form class='modify-form'>
-        <div class='textbox'>
+        <div class='textbox tb1'>
+          <h2>Please modify posts here...</h2>
           <input type="text" name="content" id="content" placeholder="Type your new post here...">
         </div>
         <div class='textbox'>
           <input type="url" name="url" id="url" placeholder="Type your new URL here...">
         </div>
         <input type="hidden" class='hidden' name="modify-id">
-        <button class='modify' type="submit">Submit</button>
+        <div class='submit-div'>
+          <button class='modify' type="submit">Submit</button>
+        </div>
       </form>
+      <div class="sidebar">
+        <button class='submit-link'>Submit your own Aussie link...</button>
+      </div>
       <form class='submit-form'>
         <div class='textbox'>
           <input type="text" name="nickname" class="nickname" placeholder="Type your nickname...">
@@ -33,7 +39,9 @@
         <div class='textbox'>
           <input type="url" name="new-url" id="new-url" placeholder="Type your new URL here...">
         </div>
-        <button class='submit-new' type="submit">Submit</button>
+        <div class="submit-box">
+          <button class='submit-new' type="submit">Submit</button>
+        </div>
       </form>
     </div>
   </div>
