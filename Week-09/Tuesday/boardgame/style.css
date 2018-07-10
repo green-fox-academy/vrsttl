@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: repeat(6, minmax(100px, 1fr)) / repeat(7, minmax(100px, 1fr));
+  background-color: white;
+}
+
+.field{
+  background-color: rgb(14, 185, 14);
+  display: flex;
+  grid-area: 2 / 2 / span 4/ span 5;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: inset 0 0 10px black;
+}
+.cards {
+  display: flex;
+  width: 50%;
+  height: 50%;
+  background-color: purple;
+  margin-right: 30px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+.tile{
+  background-color: yellow;
+  grid-auto-flow: row;
+  border: 1px solid black;
+}
