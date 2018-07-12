@@ -15,6 +15,7 @@ let http = new XMLHttpRequest();
 http.open('GET', 'http://localhost:3000/game', true);
 http.onload = () => {
   scoreCounter = localStorage.getItem('score');
+  scoreCard.innerHTML = `Score: ${scoreCounter}`;
   let ans1 = document.querySelector('.one');
   let ans2 = document.querySelector('.two');
   let ans3 = document.querySelector('.three');

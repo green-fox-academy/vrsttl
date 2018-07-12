@@ -108,7 +108,6 @@ app.post('/questions', (req, res) => {
 
   let sql = `INSERT INTO questions (question) VALUES ("${question}");`;
 
-  let id = 0;;
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);
@@ -116,7 +115,6 @@ app.post('/questions', (req, res) => {
       return;
     }
     console.log(rows);
-    id = rows.insertId;
 
     sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${rows.insertId}, ${isCorrect1}), ("${answer2}", ${rows.insertId}, ${isCorrect2}), ("${answer3}", ${rows.insertId}, ${isCorrect3}), ("${answer4}", ${rows.insertId}, ${isCorrect4});`;
     conn.query(sql, (err, rows) => {
