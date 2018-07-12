@@ -12,28 +12,46 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 const conn = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
+  host: '127.0.0.1',
+  user: 'root',
+  password: 'password',
+  database: 'quiz'
 });
 
-app.get('/', (req, res) => {
-  let forwardedBasicInfo = [];
-  forecasts.forEach(element => {
-    let currentCity = {
-      city: element.city,
-      location: element.location,
-      temp: element.weather[0].temp,
-      icon: element.weather[0].icon
+app.get('/game', (req, res) => {
+  let random = Math.floor(Math.random() * 10) + 1;
+  let sql = `SELECT * FROM questions LEFT JOIN answers ON questions.id = answers.question_id WHERE answers.question_id = ${random};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    } else {
+      let sortedAnswers = [];
+      function setUpTheData() {
+        rows.forEach(row => {
+          let answerObject = {
+            question_id: row.question_id,
+            id: row.id,
+            answer: row.answer,
+            is_correct: row.is_correct
+          }
+          sortedAnswers.push(answerObject);
+        });
+      }
+      setUpTheData();
+      let forwardedObject = {
+        id: rows[0].question_id,
+        question: rows[0].question,
+        answers: sortedAnswers
+      }
+      res.render('home', {
+        forwardedObject
+      });
+      console.log(forwardedObject);
     }
-    forwardedBasicInfo.push(currentCity);
   });
-  console.log(forwardedBasicInfo);
-
-  res.render('home', {
-    title: 'Weather forecast splash page',
-    cities: forwardedBasicInfo,
-    appurl: app.url
-  });
+});
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
 });
