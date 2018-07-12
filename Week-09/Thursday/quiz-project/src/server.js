@@ -52,6 +52,23 @@ app.get('/game', (req, res) => {
     }
   });
 });
+
+app.get('/questions', (req, res) => {
+  let sql = `SELECT * FROM questions;`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    } else {
+     
+      res.render('questions', {
+        rows
+      });
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 });

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Question manager</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css" />
+</head>
+
+<body>
+  <div class='wrapper'>
+    <div class='manage'>
+      <h1>Manage questions</h1>
+      <table class='question-list'>
+        <% rows.forEach((row,index) =>{ %>
+          <tr>
+            <td>
+              <%= row.question %>
+            </td>
+            <td>
+              <button class="delete-ques<%= index %>" type="submit">Delete</button>
+            </td>
+          </tr>
+          <% }); %>
+
+      </table>
+    </div>
+
+    <form action="submit">
+      <input type="text" name="new-question" placeholder="Type your question here...">
+      <h2></h2>
+      <label>
+        <p>#1</p>
+        <input type="text" name="a1" placeholder="Type your answer here...">
+        <input type="radio" name="correct">
+      </label>
+      <label>
+        <p>#2</p>
+        <input type="text" name="a2" placeholder="Type your answer here...">
+        <input type="radio" name="correct">
+      </label>
+      <label>
+        <p>#3</p>
+        <input type="text" name="a3" placeholder="Type your answer here...">
+        <input type="radio" name="correct">
+      </label>
+      <label>
+        <p>#4</p>
+        <input type="text" name="a4" placeholder="Type your answer here...">
+        <input type="radio" name="correct">
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+
+
+
+  </div>
+  <script src="../static/questions.js"></script>
+</body>
+
+</html>
