@@ -71,6 +71,7 @@ app.get('/questions', (req, res) => {
       res.status(500).send();
       return;
     } else {
+      console.log(rows);
       res.render('questions', {
         rows
       });
@@ -88,56 +89,34 @@ app.post('/questions', (req, res) => {
   let isCorrect2 = req.body.is_correct2;
   let isCorrect3 = req.body.is_correct3;
   let isCorrect4 = req.body.is_correct4;
+
   let sql = `INSERT INTO questions (question) VALUES ("${question}");`;
 
+  let id = 0;;
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);
       res.status(500).send();
       return;
-    }
-    res.json({
+    } id = rows.insertId;
+  });
+
+  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${id}, ${isCorrect1}), ("${answer2}", ${id}, ${isCorrect2}), ("${answer3}", ${id}, ${isCorrect3}), ("${answer4}", ${id}, ${isCorrect4});`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    } res.json({
       status: "ok",
       id: rows.insertId
     });
-  });
-  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${id}), ${isCorrect1};`;
-  conn.query(sql, (err, rows) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-      return;
-    }
-  });
-  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer2}", ${id}), ${isCorrect2};`;
-  conn.query(sql, (err, rows) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-      return;
-    }
-  });
-  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer3}", ${id}), ${isCorrect3};`;
-  conn.query(sql, (err, rows) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-      return;
-    }
-  });
-  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer4}", ${id}), ${isCorrect4};`;
-  conn.query(sql, (err, rows) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-      return;
-    }
   });
 })
 
 app.delete(`/questions/:id`, (req, res) => {
   const id = req.params.id;
-  let sql = `DELETE * FROM answers WHERE question_id = ${id};`
+  let sql = `DELETE FROM answers WHERE question_id = ${id};`
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log(err);

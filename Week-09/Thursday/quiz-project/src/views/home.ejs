@@ -12,15 +12,33 @@
   <div class='wrapper'>
     <div class='score'></div>
     <div class='question-box'>
-      <h1 class='question'><%= forwardedObject.question %></h1>
-      <p class='answer one'><%= forwardedObject.answers[0].answer %></p>
-      <div class='iscorrect' hidden><%= forwardedObject.answers[0].iscorrect %></div>
-      <p class='answer two'><%= forwardedObject.answers[1].answer %></p>
-      <div class='iscorrect' hidden><%= forwardedObject.answers[1].iscorrect %></div>
-      <p class='answer three'><%= forwardedObject.answers[2].answer %></p>
-      <div class='iscorrect' hidden><%= forwardedObject.answers[2].iscorrect %></div>
-      <p class='answer four'><%= forwardedObject.answers[3].answer %></p>
-      <div class='iscorrect' hidden><%= forwardedObject.answers[3].iscorrect %></div>
+      <h1 class='question'>
+        <%= forwardedObject.question %>
+      </h1>
+      <p class='answer one'>
+        <%= forwardedObject.answers[0].answer %>
+      </p>
+      <div class='iscorrect-one' hidden>
+        <%= forwardedObject.answers[0].is_correct %>
+      </div>
+      <p class='answer two'>
+        <%= forwardedObject.answers[1].answer %>
+      </p>
+      <div class='iscorrect-two' hidden>
+        <%= forwardedObject.answers[1].is_correct %>
+      </div>
+      <p class='answer three'>
+        <%= forwardedObject.answers[2].answer %>
+      </p>
+      <div class='iscorrect-three' hidden>
+        <%= forwardedObject.answers[2].is_correct %>
+      </div>
+      <p class='answer four'>
+        <%= forwardedObject.answers[3].answer %>
+      </p>
+      <div class='iscorrect-four' hidden>
+        <%= forwardedObject.answers[3].is_correct %>
+      </div>
     </div>
     <a href="http://localhost:3000/questions">Manage questions</a>
   </div>
