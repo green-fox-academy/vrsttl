@@ -19,37 +19,47 @@ const conn = mysql.createConnection({
 });
 
 app.get('/game', (req, res) => {
-  let random = Math.floor(Math.random() * 10) + 1;
-  let sql = `SELECT * FROM questions LEFT JOIN answers ON questions.id = answers.question_id WHERE answers.question_id = ${random};`;
-  conn.query(sql, (err, rows) => {
+  let rowRandom = 0;
+  let sql = 'SELECT id FROM questions ORDER BY RAND() LIMIT 1;';
+  conn.query(sql, (err, rowRand) => {
     if (err) {
       console.log(err);
       res.status(500).send();
       return;
-    } else {
-      let sortedAnswers = [];
-      function setUpTheData() {
-        rows.forEach(row => {
-          let answerObject = {
-            question_id: row.question_id,
-            id: row.id,
-            answer: row.answer,
-            is_correct: row.is_correct
-          }
-          sortedAnswers.push(answerObject);
-        });
-      }
-      setUpTheData();
-      let forwardedObject = {
-        id: rows[0].question_id,
-        question: rows[0].question,
-        answers: sortedAnswers
-      }
-      res.render('home', {
-        forwardedObject
-      });
-      console.log(forwardedObject);
     }
+    rowRandom = rowRand[0].id;
+
+    sql = `SELECT * FROM questions LEFT JOIN answers ON questions.id = answers.question_id WHERE answers.question_id = ${rowRandom};`;
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      } else {
+        let sortedAnswers = [];
+        function setUpTheData() {
+          rows.forEach(row => {
+            let answerObject = {
+              question_id: row.question_id,
+              id: row.id,
+              answer: row.answer,
+              is_correct: row.is_correct
+            }
+            sortedAnswers.push(answerObject);
+          });
+        }
+        setUpTheData();
+        let forwardedObject = {
+          id: rows[0].question_id,
+          question: rows[0].question,
+          answers: sortedAnswers
+        }
+        res.render('home', {
+          forwardedObject
+        });
+        console.log(forwardedObject);
+      }
+    });
   });
 });
 
@@ -61,11 +71,90 @@ app.get('/questions', (req, res) => {
       res.status(500).send();
       return;
     } else {
-     
       res.render('questions', {
         rows
       });
     }
+  });
+});
+
+app.post('/questions', (req, res) => {
+  let question = req.body.question;
+  let answer1 = req.body.answer1;
+  let answer2 = req.body.answer2;
+  let answer3 = req.body.answer3;
+  let answer4 = req.body.answer4;
+  let isCorrect1 = req.body.is_correct1;
+  let isCorrect2 = req.body.is_correct2;
+  let isCorrect3 = req.body.is_correct3;
+  let isCorrect4 = req.body.is_correct4;
+  let sql = `INSERT INTO questions (question) VALUES ("${question}");`;
+
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    res.json({
+      status: "ok",
+      id: rows.insertId
+    });
+  });
+  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${id}), ${isCorrect1};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer2}", ${id}), ${isCorrect2};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer3}", ${id}), ${isCorrect3};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer4}", ${id}), ${isCorrect4};`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+  });
+})
+
+app.delete(`/questions/:id`, (req, res) => {
+  const id = req.params.id;
+  let sql = `DELETE * FROM answers WHERE question_id = ${id};`
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    }
+    sql = `DELETE FROM questions WHERE id = ${id};`;
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      }
+      res.json({
+        rows
+      });
+    });
   });
 });
 
