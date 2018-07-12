@@ -78,6 +78,7 @@ app.get('/questions', (req, res) => {
     }
   });
 });
+
 app.get('/api/questions', (req, res) => {
   let sql = `SELECT * FROM questions;`;
   conn.query(sql, (err, rows) => {
@@ -113,21 +114,23 @@ app.post('/questions', (req, res) => {
       console.log(err);
       res.status(500).send();
       return;
-    } id = rows.insertId;
-  });
+    }
+    console.log(rows);
+    id = rows.insertId;
 
-  sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${id}, ${isCorrect1}), ("${answer2}", ${id}, ${isCorrect2}), ("${answer3}", ${id}, ${isCorrect3}), ("${answer4}", ${id}, ${isCorrect4});`;
-  conn.query(sql, (err, rows) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send();
-      return;
-    } res.json({
-      status: "ok",
-      id: rows.insertId
+    sql = `INSERT INTO answers (answer, question_id, is_correct) VALUES ("${answer1}", ${rows.insertId}, ${isCorrect1}), ("${answer2}", ${rows.insertId}, ${isCorrect2}), ("${answer3}", ${rows.insertId}, ${isCorrect3}), ("${answer4}", ${rows.insertId}, ${isCorrect4});`;
+    conn.query(sql, (err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send();
+        return;
+      } res.json({
+        status: "ok",
+        id: rows.insertId
+      });
     });
   });
-})
+});
 
 app.delete(`/questions/:id`, (req, res) => {
   const id = req.params.id;
