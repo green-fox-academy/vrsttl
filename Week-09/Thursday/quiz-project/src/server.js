@@ -78,6 +78,21 @@ app.get('/questions', (req, res) => {
     }
   });
 });
+app.get('/api/questions', (req, res) => {
+  let sql = `SELECT * FROM questions;`;
+  conn.query(sql, (err, rows) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send();
+      return;
+    } else {
+      console.log(rows);
+      res.json(
+        rows
+      );
+    }
+  });
+});
 
 app.post('/questions', (req, res) => {
   let question = req.body.question;
