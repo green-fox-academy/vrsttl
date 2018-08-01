@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tile = (props) => {
   return (
-    <div className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
+    <div className='tc bg-light-grey dib br3 pa3 ma2 grow bw2 shadow-5 w-30 h-25'>
       <img alt='beer' src={props.imgurl} />
       <div>
         <h2>{props.name}</h2>

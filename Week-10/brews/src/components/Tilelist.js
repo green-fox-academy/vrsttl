@@ -4,7 +4,7 @@ import Tile from './Tile';
 const TileList = (props) => {
   return (
     <div>
-      {
+      { 
         props.beers.map((element, i) => {
           return (
             <Tile

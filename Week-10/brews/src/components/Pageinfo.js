@@ -4,8 +4,7 @@ class Pageinfo extends React.Component {
   render() {
     return (
       <div>
-        <h1>Satisfy your thirst for beer-related info here...</h1>
-
+        <h1 className='header'>Satisfy your thirst for beer-related info here...</h1>
       </div>
     );
   }
