@@ -1,13 +1,16 @@
 import React from 'react';
 import Tile from './Tile';
 
-
 class TileList extends React.Component {
- /* propsChangedBeerUpdate = () => {
-    let currentSelected = this.isSelected;
-    (currentSelected) ? currentSelected = false : currentSelected = true;
-    this.updateBeers;
-  }*/
+  state = {
+    selectedTile: 0
+  }
+
+  onClick = (e) => {
+    console.log(e.target)
+    this.setState({ selectedTile: e.target.props.id });
+  }
+
   render() {
     return (
       <div>
@@ -19,8 +22,9 @@ class TileList extends React.Component {
                 name={element.name}
                 imgurl={element.image_url}
                 description={element.description}
-                isSelected={false}
-                //onClick={this.propsChangedBeerUpdate()}
+                selectedTile={this.state.selectedTile}
+                id={element.id}
+                onClick={this.onClick}
               />
             );
           })
@@ -29,26 +33,5 @@ class TileList extends React.Component {
     );
   }
 };
-/*
-const TileList = (props) => {
-  return (
-    <div>
-      {
-        props.beers.map((element, i) => {
-          return (
-            <Tile
-              key={i}
-              name={element.name}
-              imgurl={element.image_url}
-              description={element.description}
-              isSelected={false}
-              onClick={() => { (props.isSelected) ? props.isSelected = false : props.isSelected = true }}
-            />
-          );
-        })
-      }
-    </div>
-  );
-}
-*/
+
 export default TileList;

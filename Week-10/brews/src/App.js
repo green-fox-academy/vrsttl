@@ -48,7 +48,7 @@ class App extends Component {
       <div className="App">
         <Pageinfo />
         <Form getBeers={this.getBeers} />
-        <TileList beers={this.state.beerlist} whichPage={this.state.change} updateBeers={this.getUpdatedBeers} />
+        <TileList beers={this.state.beerlist} whichPage={this.state.change} />
         <Pagination onChange={this.onChange} current={this.state.change} total={25} />
       </div>
     );
