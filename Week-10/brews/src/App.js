@@ -15,7 +15,7 @@ class App extends Component {
 
   getBeers = async (e) => {
     e.preventDefault();
-    let punkURL = `https://api.punkapi.com/v2/beers?page=${this.state.change}&per_page=8`;
+    let punkURL = `https://api.punkapi.com/v2/beers?page=${this.state.change}&per_page=6`;
     const api_call = await fetch(punkURL);
     const responseData = await api_call.json();
     console.log(responseData);
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   getUpdatedBeers = async () => {
-    let punkURL = `https://api.punkapi.com/v2/beers?page=${this.state.change}&per_page=8`;
+    let punkURL = `https://api.punkapi.com/v2/beers?page=${this.state.change}&per_page=6`;
     const api_call = await fetch(punkURL);
     const responseData = await api_call.json();
     console.log(responseData);
@@ -47,7 +47,7 @@ class App extends Component {
         <Pageinfo />
         <Form getBeers={this.getBeers} />
         <TileList beers={this.state.beerlist} whichPage={this.state.change} />
-        <Pagination onChange={this.onChange} current={this.state.change} total={25} />
+        <Pagination onChange={this.onChange} current={this.state.change} total={120} pageSize={6} />
       </div>
     );
   }

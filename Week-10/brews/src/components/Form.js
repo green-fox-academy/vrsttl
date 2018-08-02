@@ -4,7 +4,7 @@ class Form extends React.Component {
   render() {
     return (
       <form className="form" onSubmit={this.props.getBeers}>
-        <button>Show me all the beers I want</button>
+        <button>SHOW ME ALL THE BEERS YOU GOT...</button>
       </form>
     );
   }
