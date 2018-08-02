@@ -3,7 +3,7 @@ import React from 'react';
 class Form extends React.Component {
   render() {
     return (
-      <form onSubmit={this.props.getBeers}>
+      <form className="form" onSubmit={this.props.getBeers}>
         <button>Show me all the beers I want</button>
       </form>
     );

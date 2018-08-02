@@ -7,8 +7,7 @@ class TileList extends React.Component {
   }
 
   onClick = (e) => {
-    console.dir(e.currentTarget)
-    this.setState({ selectedTile: e.currentTarget.id });
+    (this.state.selectedTile !== e.currentTarget.id) ? this.setState({ selectedTile: e.currentTarget.id }) : this.setState({ selectedTile: 0 });
   }
 
   render() {
