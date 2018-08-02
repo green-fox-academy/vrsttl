@@ -7,7 +7,7 @@ class TileList extends React.Component {
   }
 
   onClick = (e) => {
-    (this.state.selectedTile !== e.currentTarget.id) ? this.setState({ selectedTile: e.currentTarget.id, imgSrc: '' }) : this.setState({ selectedTile: 0 });
+    (this.state.selectedTile !== e.currentTarget.id) ? this.setState({ selectedTile: e.currentTarget.id }) : this.setState({ selectedTile: 0 });
   }
 
   render() {
