@@ -39,8 +39,7 @@ class App extends Component {
     console.log(page);
     this.setState({
       change: page,
-    });
-    this.getUpdatedBeers();
+    }, this.getUpdatedBeers);
   }
 
   render() {
