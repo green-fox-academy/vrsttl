@@ -11,7 +11,7 @@ import 'tachyons';
 class App extends Component {
   state = {
     beerlist: [],
-    change: 1
+    change: 1,
   }
 
   getBeers = async (e) => {
@@ -48,7 +48,7 @@ class App extends Component {
       <div className="App">
         <Pageinfo />
         <Form getBeers={this.getBeers} />
-        <TileList beers={this.state.beerlist} whichPage={this.state.change} />
+        <TileList beers={this.state.beerlist} whichPage={this.state.change} updateBeers={this.getUpdatedBeers} />
         <Pagination onChange={this.onChange} current={this.state.change} total={25} />
       </div>
     );
