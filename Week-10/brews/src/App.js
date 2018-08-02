@@ -6,7 +6,6 @@ import Pagination from 'rc-pagination';
 import TileList from './components/Tilelist'
 import 'tachyons';
 
-
 class App extends Component {
   state = {
     beerlist: [],

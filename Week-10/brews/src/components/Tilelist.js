@@ -7,7 +7,8 @@ class TileList extends React.Component {
   }
 
   onClick = (e) => {
-    (this.state.selectedTile !== e.currentTarget.id) ? this.setState({ selectedTile: e.currentTarget.id }) : this.setState({ selectedTile: 0 });
+    const idVar = parseInt(e.currentTarget.id, 10);
+    (this.state.selectedTile !== idVar) ? this.setState({ selectedTile: idVar }) : this.setState({ selectedTile: 0 });
   }
 
   render() {
@@ -24,6 +25,7 @@ class TileList extends React.Component {
                 selectedTile={this.state.selectedTile}
                 id={element.id}
                 onClick={this.onClick}
+                alt={element.tagline}
               />
             );
           })
